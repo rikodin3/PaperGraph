@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connected Papers Clone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://unpkg.com/cytoscape@3.30.2/dist/cytoscape.min.js"></script>
+    <script defer src="/static/app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="top-nav">
+        <div class="brand">Graph Scholar</div>
+        <form class="top-search" id="top-search-form">
+          <input
+            id="top-search-input"
+            type="text"
+            placeholder="Search by title..."
+            aria-label="Search papers"
+          />
+          <button type="submit">Build a graph</button>
+        </form>
+        <button type="button" id="home-btn" class="top-home-btn hidden">Home</button>
+      </header>
+
+      <main>
+        <section id="landing-view" class="landing-view">
+          <div class="ambient ambient-left"></div>
+          <div class="ambient ambient-right"></div>
+          <div class="hero-card">
+            <h1>Explore academic papers in a living graph</h1>
+            <p>Find an origin paper, then inspect related works and citation structure visually.</p>
+            <form id="hero-search-form" class="hero-search">
+              <input
+                id="hero-search-input"
+                type="text"
+                minlength="2"
+                placeholder="Try: attention is all you need"
+                aria-label="Search papers"
+              />
+              <button type="submit">Build a graph</button>
+            </form>
+            <div id="search-results" class="search-results"></div>
+            <section class="history-block" aria-labelledby="history-title">
+              <div class="history-head">
+                <h2 id="history-title">Search History</h2>
+              </div>
+              <div id="history-list" class="history-list"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="graph-view" class="graph-view hidden">
+          <aside class="left-panel">
+            <h2>Related Works</h2>
+            <p class="panel-subtitle">Papers sharing references with the selected node.</p>
+            <ul id="related-list" class="related-list"></ul>
+          </aside>
+
+          <section class="graph-panel">
+            <div class="graph-toolbar">
+              <div>
+                <h2 id="graph-title">Neighborhood Graph</h2>
+                <p id="graph-meta">Loading...</p>
+              </div>
+              <div class="badge" id="graph-badge">Depth 1</div>
+            </div>
+            <div id="graph-canvas" class="graph-canvas"></div>
+          </section>
+
+          <aside class="right-panel">
+            <h2>Paper Details</h2>
+            <article id="paper-details" class="paper-details"></article>
+          </aside>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
